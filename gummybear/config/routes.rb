@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users
   resources :games
   resources :categories
+  resources :login
 
   # Example resource route with options:
   #   resources :products do
