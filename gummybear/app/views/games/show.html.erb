@@ -1,16 +1,21 @@
-<h1 class="center-align">Game Name</h1>
+<h1 class="center-align"><%= @game.name %></h1>
 <div class="row">
   <div class="col s12 m12 l12">
     <div class="card">
       <div class="card-image">
-        <img src="images/sample-1.jpg">
-        <span class="card-title">Card Title</span>
+        <img class="circle" src="http://static01.nyt.com/images/2013/03/07/us/CALHAMER2-obit/CALHAMER2-obit-articleLarge.jpg">
+<!--         <span class="card-title">Card Title</span> -->
       </div>
       <div class="card-content">
         <h4>Category:</h4>
+        <p><%= @game.category.name %></p>
         <h4>Description:</h4>
+        <p><%= @game.description %></p>
+        <br>
         <h6>Minimum Players:</h6>
+        <p><%= @game.min_players %>
         <h6>Maximum Players:</h6>
+        <p><%= @game.max_players %>
       </div>
       <div class="card-action">
         <a href="/users/index">Back</a>
