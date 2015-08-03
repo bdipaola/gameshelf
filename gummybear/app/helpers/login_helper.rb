@@ -15,9 +15,14 @@ module LoginHelper
         session[:user_id] = nil
     end
 
-    def enforce_login(current_url, redirect_url)
-        unless current_user # && authorized(current_url)
-            redirect redirect_url
+    def enforce_login(params_user_id, redirect_url)
+        unless current_user && authorized(params_user_id)
+            redirect_to redirect_url
         end
     end
+
+    def authorized(params_user_id)
+        current_user.id == params_user_id
+    end
+
 end

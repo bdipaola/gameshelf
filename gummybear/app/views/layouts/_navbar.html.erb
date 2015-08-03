@@ -2,9 +2,12 @@
   <div class="nav-wrapper blue-grey darken-1">
     <a href="/users" class="brand-logo">GameShelf</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-     <!--  <li><a href="">Login</a></li>
-      <li><a href="/users/new">Create Account</a></li> -->
-      <li><a href="">Logout</a></li>
+      <% if current_user %>
+        <li><a href="">Logout</a></li>
+      <% else %>
+        <li><a href="">Login</a></li>
+        <li><a href="/users/new">Create Account</a></li>
+      <% end %>
       <li>
         <form>
           <div class="input-field sm">
