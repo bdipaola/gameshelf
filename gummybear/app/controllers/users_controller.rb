@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def dashboard
+  end
+  
   def index
     @games = Game.all
   end

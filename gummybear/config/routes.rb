@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'games#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+    get 'users/dashboard' => 'users#dashboard'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users
   resources :games
   resources :categories
+  resources :login
 
   # Example resource route with options:
   #   resources :products do
