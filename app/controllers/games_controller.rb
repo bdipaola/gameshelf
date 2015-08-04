@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 	include LoginHelper
 
   def index
-    if authorized(params[:user_id])
+    if current_user
     		@games = current_user.games
   	else
   		@games = Game.all
