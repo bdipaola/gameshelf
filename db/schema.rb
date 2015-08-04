@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804001742) do
+ActiveRecord::Schema.define(version: 20150804234738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150804001742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -38,15 +40,18 @@ ActiveRecord::Schema.define(version: 20150804001742) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",           null: false
     t.integer  "category_id"
-    t.text     "description", null: false
+    t.text     "description",    null: false
     t.integer  "min_players"
     t.integer  "max_players"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "canonical_name", null: false
   end
 
+  add_index "games", ["max_players"], name: "index_games_on_max_players", using: :btree
+  add_index "games", ["min_players"], name: "index_games_on_min_players", using: :btree
   add_index "games", ["name"], name: "index_games_on_name", using: :btree
 
   create_table "user_games", force: :cascade do |t|
@@ -57,12 +62,17 @@ ActiveRecord::Schema.define(version: 20150804001742) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",          null: false
-    t.string   "username",      null: false
-    t.string   "email",         null: false
+    t.string   "name",               null: false
+    t.string   "username",           null: false
+    t.string   "email",              null: false
     t.string   "password_hash"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "canonical_username", null: false
+    t.string   "canonical_name",     null: false
   end
+
+  add_index "users", ["name"], name: "index_users_on_name", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
 end
