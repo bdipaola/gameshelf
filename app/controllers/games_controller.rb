@@ -2,7 +2,11 @@ class GamesController < ApplicationController
 	include LoginHelper
 
   def index
-    @games = Game.all
+    if params[:user_id]
+      @games = User.find(params[:user_id]).games
+    else
+      @games = Game.all
+    end
   end
 
   def show
