@@ -1,3 +1,8 @@
+<style>
+  input { float: left; }
+  input { margin-left: .6em; }
+  input { margin-bottom: 1.5em; }
+</style>
 <h1 class="center-align"><%= @game.name %></h1>
 <div class="row">
   <div class="col s12 m12 l12">
@@ -26,19 +31,38 @@
         <% end %>
       </div>
 
+      <% if current_user %>      
       <div class="card-action">
         <a href="/games/<%= @game.id %>/comments/new">Add comment</a>
       </div>
+      <% end %>
+
       <% if @game.comments.any? %>
-        <p class="col s12 m12 l12"><h5>Comments:</h5></p>
+        <p><h5 style="text-indent: .5em">Comments:</h5></p>
 
         <% @game.comments.each do |comment| %>
-        <p class="col s12 m12 l12"><%= comment.content %> -<em><%= comment.user.username %></em> </p>
+        <p class="col s12 m12 l12"><%= comment.content %> -<em><%= comment.user.username %></em>
+
+        <% if current_user && current_user.id == comment.user.id %>
+          <form action="/games/<%= @game.id %>/comments/<%= comment.id %>/edit" method="get">
+            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+            <input type="submit" value="edit">
+          </form>
+
+          <form action="/games/<%= @game.id %>/comments/<%= comment.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+            <input type="submit" value="delete">
+          </form>
+        <% end %>
+
         <% end %>
       <% end %>
+      </p>
       </div>
 
 
     </div>
   </div>
 </div>
+</html>

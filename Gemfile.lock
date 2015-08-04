@@ -202,8 +202,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-<<<<<<< HEAD:Gemfile.lock
    1.10.6
-=======
-   1.10.3
->>>>>>> Add comment functionality:gummybear/Gemfile.lock
