@@ -3,7 +3,6 @@
   <thead>
     <tr>
       <th data-field="id"><h4>Title</h4></th>
-      <th data-field="category"><h4>Category</h4></th>
       <th data-field="name" class="center-align"><h4>Min Players</h4></th>
       <th data-field="price" class="center-align"><h4>Max Players</h4></th>
     </tr>
@@ -12,7 +11,6 @@
     <% @games.each do |game| %>
       <tr>
         <td><a href="/games/<%= game.id %>"><%= game.name %></a></td>
-        <td><a href="/categories/<%= game.category_id %>"><%= game.category.name %></a></td>
         <td class="center-align"><%= game.min_players %></td>
         <td class="center-align"><%= game.max_players %></td>
       </tr>
