@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  include LoginHelper
+  
   def index
     @games = Game.all
   end

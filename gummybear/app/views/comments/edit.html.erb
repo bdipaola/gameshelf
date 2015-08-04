@@ -1,0 +1,12 @@
+<form action="/games/<%= @game.id %>/comments/<%= @comment.id %>" method="post">
+	<input type="hidden" name="_method" value="put">
+	<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <label for="comment[content]">Comment:</label>
+  <input type="text" name="comment[content]" value="<%= @comment.content %>"></input>
+    <input type="hidden" name="comment[game_id]" value="<%= @game.id %>"></input>
+  <input type="submit" value="Edit Comment">
+</form>
+
+<% if @comment.errors.any? %>
+	<p class="red-text">Unable to update comment. Please try again.</p>
+<% end %>
