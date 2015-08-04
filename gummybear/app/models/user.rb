@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :friendings
   has_many :friends, through: :friendings
 
+  has_many :comments
+
 
   def password
     @password ||= BCrypt::Password.new(self.password_hash)
