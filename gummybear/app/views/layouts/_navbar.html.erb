@@ -3,9 +3,9 @@
     <a href="/users" class="brand-logo">GameShelf</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <% if current_user %>
-        <li><a href="">Logout</a></li>
+        <li><a href="/login">Logout</a></li>
       <% else %>
-        <li><a href="">Login</a></li>
+        <li><a href="/login/new">Login</a></li>
         <li><a href="/users/new">Create Account</a></li>
       <% end %>
       <li>
