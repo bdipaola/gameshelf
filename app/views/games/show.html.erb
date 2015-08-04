@@ -19,7 +19,8 @@
       </div>
       <div class="card-action">
         <% if current_user %>
-          <a href="/users/<%= current_user.id %>/games">Back</a>
+          <a href="/users/<%= current_user.id %>/games">Back to My Games</a>
+          <a href="/games">Back to All Games</a>
         <% else %>
           <a href="/games">Back</a>
         <% end %>
