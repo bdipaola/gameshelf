@@ -1,6 +1,6 @@
 class AddIndicesToUsers < ActiveRecord::Migration
   def change
-    add_index :name
-    add_index :username
+    add_index :users, :name
+    add_index :users, :username
   end
 end
