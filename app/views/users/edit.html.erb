@@ -2,6 +2,7 @@
 <div class="row">
   <form class="col s12 offset-s3 id="user-update" action="/users/<%= @user.id %>" method="POST"">
     <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+    <input type="hidden" name="_method" value="put">
     <div class="row">
       <div class="input-field col s6">
         <input id="name" name="user[name]" type="text" class="validate" value="<%= @user.name %>">
