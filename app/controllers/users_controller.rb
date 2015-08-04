@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   include LoginHelper
 
+  def friends
+    @friends = (User.find(params[:id])).friends
+  end
+
   def dashboard
     enforce_login(params[:id], "/")
     @user = User.find(params[:id])
