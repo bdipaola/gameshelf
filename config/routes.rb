@@ -18,13 +18,16 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :games
+    resources :comments
   end
 
   resources :categories do
     resource :games, only: [:index, :show]
   end
 
-  resources :games, only: [:index, :show]
+  resources :games, only: [:index, :show] do
+    resources :comments
+  end
 
   resources :login
 
