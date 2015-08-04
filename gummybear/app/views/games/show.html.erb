@@ -20,15 +20,19 @@
       <div class="card-action">
         <a href="/games">Back</a>
       </div>
-      <% if @game.comments.any? %>
-      <p>Comments:</p>
-      <ul>
-        <% @game.comments.each do |comment| %>
-        <li><%= render partial: "_show_comments", locals: {comment: comment}, layout: false %></li>
-        <% end %>
-      </ul>
 
+      <div class="card-action">
+        <a href="/games/<%= @game.id %>/comments/new">Add comment</a>
+      </div>
+      <% if @game.comments.any? %>
+        <p class="col s12 m12 l12"><h5>Comments:</h5></p>
+
+        <% @game.comments.each do |comment| %>
+        <p class="col s12 m12 l12"><%= comment.content %> -<em><%= comment.user.username %></em> </p>
+        <% end %>
       <% end %>
+      </div>
+
 
     </div>
   </div>
