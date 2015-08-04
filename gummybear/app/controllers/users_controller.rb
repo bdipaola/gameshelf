@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include LoginHelper
 
   def dashboard
-    # enforce_login(params[:id], "/")
+    enforce_login(params[:id], "/")
     @games = Game.all
   end
 
