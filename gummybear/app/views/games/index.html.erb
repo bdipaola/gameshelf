@@ -8,7 +8,6 @@
     </tr>
   </thead>
   <tbody>
-    <!-- Need to implement logic to show user's games when logged in -->
     <% @games.each do |game| %>
       <tr>
         <td><a href="/games/<%= game.id %>"><%= game.name %></a></td>
