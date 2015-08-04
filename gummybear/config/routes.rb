@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'games#index'
 
   # Example of regular route:
-    # get 'users/dashboard' => 'users#dashboard'
+    get 'users/:id/dashboard' => 'users#dashboard'
 
     get 'logout' => 'login#destroy'
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
+
   resources :users do
     resources :games
   end
