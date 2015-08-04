@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def dashboard
     enforce_login(params[:id], "/")
-    @games = Game.all
+    @user = User.find(params[:id])
   end
 
   def show

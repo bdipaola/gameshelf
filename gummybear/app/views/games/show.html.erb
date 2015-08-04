@@ -18,7 +18,11 @@
         <p><%= @game.max_players %>
       </div>
       <div class="card-action">
-        <a href="/games">Back</a>
+        <% if current_user %>
+          <a href="/users/<%= current_user.id %>/games">Back</a>
+        <% else %>
+          <a href="/games">Back</a>
+        <% end %>
       </div>
     </div>
   </div>
