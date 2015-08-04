@@ -1,10 +1,11 @@
 class LoginController < ApplicationController
 
     def new
+      render "login/_new.html.erb"
     end
 
     def create
-      @user = User.find_by(username: params[:username])
+      @user = find_user(params[:username])
       if @user and @user.authenticate(params[:password])
         login(@user)
         redirect_to @user
