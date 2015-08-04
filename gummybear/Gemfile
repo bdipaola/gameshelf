@@ -47,6 +47,7 @@ group :development, :test do
 
   #Installing rspec for rails
   gem 'rspec-rails', '~> 3.0'
+  gem 'simplecov', :require => false
 
 
 
