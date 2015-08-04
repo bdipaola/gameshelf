@@ -22,7 +22,11 @@ module LoginHelper
     end
 
     def authorized(params_user_id)
-        current_user.id == params_user_id.to_i
+        if current_user
+            current_user.id == params_user_id.to_i
+        else
+            false
+        end
     end
 
 end
