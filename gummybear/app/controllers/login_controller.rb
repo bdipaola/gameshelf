@@ -1,6 +1,5 @@
 class LoginController < ApplicationController
   include LoginHelper
-
   def new
     render "login/_new.html.erb"
   end
@@ -9,7 +8,7 @@ class LoginController < ApplicationController
     @user = find_user(params[:username])
     if @user and @user.authenticate(params[:password])
       login(@user)
-      redirect_to @user
+      redirect_to "/users/#{@user.id}/dashboard"
     else
       redirect_to new_login_path
     end
@@ -17,6 +16,6 @@ class LoginController < ApplicationController
 
   def destroy
     logout
-    redirect_to root
+    redirect_to root_path
   end
 end

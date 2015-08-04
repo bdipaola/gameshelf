@@ -1,0 +1,35 @@
+<h3 class="center-align">Create your account below:</h3>
+<div class="row">
+  <form class="col s12 offset-s3 id="user-create" action="/users" method="POST"">
+    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="name" name="user[name]" type="text" class="validate">
+        <label for="name">Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="username" name="user[username]" type="text" class="validate">
+        <label for="username">Username</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="email" name="user[email]" type="email" class="validate">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="password" name="user[password]" type="password" class="validate">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn waves-effect waves-light" type="submit" name="create">Submit
+        <i class="material-icons">send</i>
+      </button>
+    </div>
+  </form>
+</div>
