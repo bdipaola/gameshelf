@@ -1,9 +1,10 @@
 <nav>
   <div class="nav-wrapper blue-grey darken-1">
-    <a href="/users" class="brand-logo">GameShelf</a>
+    <a href="/" class="brand-logo">GameShelf</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <% if current_user %>
         <li><a id="logout" href="/logout">Logout</a></li>
+        <li><a id="dashboard" href="/users/<%= current_user.id %>/dashboard">My Dashboard</a></li>
       <% else %>
         <li><a href="/login/new">Login</a></li>
         <li><a href="/users/new">Create Account</a></li>

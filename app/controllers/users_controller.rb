@@ -24,8 +24,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_update_params)
+      redirect_to "/users/#{@user.id}/dashboard"
+    else
+      render :update
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :username, :email, :password)
+    end
+
+    def user_update_params
+      params.require(:user).permit(:name, :username, :email)
     end
 end
