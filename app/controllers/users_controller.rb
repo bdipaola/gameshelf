@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @friend
       current_user.friends << @friend
+      current_user.save
       redirect_to "/users/#{current_user.id}/friends"
     else
       render "dashboard"
@@ -59,6 +60,7 @@ class UsersController < ApplicationController
     if current_user.friends.include?(friend)
       render "/users/#{current_user.id}/friends"
     else
+      current_user.save
       redirect_to "/users/#{current_user.id}/friends"
     end
   end
