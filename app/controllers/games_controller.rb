@@ -3,8 +3,10 @@ class GamesController < ApplicationController
 
   def index
     if params[:user_id]
+      @categories = Category.all
       @games = User.find(params[:user_id]).games
     else
+      @categories = Category.all
       @games = Game.all
     end
   end
