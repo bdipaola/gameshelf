@@ -2,6 +2,7 @@
 <!-- Otherwise, customize to user name for My Games -->
 
 <h1 class="center-align">GameShelf Games</h1>
+<%= render partial: "categories/dropdown" %>
 <% @games.each do |game| %>
   <%= render partial: "games/game", locals: {game: game} %>
 <% end %>
