@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
     get 'logout' => 'login#destroy'
 
-    post 'categories/:id' => 'categories#show'
+    post '/categories/:id' => 'categories#show'
+    post '/users/:user_id/categories/:id' => 'categories#show'
 
     get 'users/:id/friends' => 'users#friends'
     put 'users/:id/add_friend' => 'users#add_friend'
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :games
     resources :comments
+    resources :categories, only: [:index, :show]
   end
 
   resources :categories, only: [:index, :show] do
