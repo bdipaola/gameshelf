@@ -1,4 +1,11 @@
-<h1 class="center-align">All Games</h1>
+<% current_uri = request.env['PATH_INFO'] %>
+
+	<% if current_uri == "/games" || current_uri == "/" %>
+		<h1 class="center-align">All Games</h1>
+	<% else  %>
+		<h1 class="center-align">My Games</h1>
+	<% end %>
+
 <% @games.each do |game| %>
   <%= render partial: "games/game", locals: {game: game} %>
 <% end %>
