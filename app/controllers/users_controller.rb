@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   include LoginHelper
-
-  def friends
-    @friends = (User.find(params[:id])).friends
-  end
+  include SearchHelper
 
   def dashboard
     enforce_login(params[:id], "/")
@@ -41,6 +38,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def friends
+    @friends = (User.find(params[:id])).friends
+  end
+
+  def add_friend
+    @friend = User.find_by(add_friend_params)
+    @user = User.find(params[:id])
+    if @friend
+      current_user.friends << @friend
+      redirect_to "/users/#{current_user.id}/friends"
+    else
+      render "dashboard"
+    end
+  end
+
+  def remove_friend
+    friend = User.find(params[:friend][:friend_id])
+    current_user.friends.delete(friend)
+    if current_user.friends.include?(friend)
+      render "/users/#{current_user.id}/friends"
+    else
+      redirect_to "/users/#{current_user.id}/friends"
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :username, :email, :password)
@@ -48,5 +70,9 @@ class UsersController < ApplicationController
 
     def user_update_params
       params.require(:user).permit(:name, :username, :email)
+    end
+
+    def add_friend_params
+      params.require(:user).permit(:username)
     end
 end

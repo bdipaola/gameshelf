@@ -6,6 +6,12 @@
         <span class="card-title friends-link "><a href="/users/<%= friend.id %>/games"><%= friend.name %></a></span>
         <span class="right game-count">Game Count: <%= friend.games.count %></span>
       </div>
+      <form action="/users/<%= current_user.id %>/friends" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <input type="hidden" name="friend[friend_id]" value="<%= friend.id %>"></input>
+        <input type="submit" value="delete">
+      </form>
     </div>
   </div>
 </div>
