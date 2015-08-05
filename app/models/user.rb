@@ -35,4 +35,14 @@ class User < ActiveRecord::Base
     self.canonical_username = self.username.downcase
   end
 
+  def friends_with_game(game)
+    self.friends.select do |friend|
+      friend_has_game?(friend, game)
+    end
+  end
+
+  def friend_has_game?(friend, game)
+    friend.game_ids.include?(game.id)
+  end
+
 end

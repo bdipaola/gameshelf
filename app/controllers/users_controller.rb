@@ -65,6 +65,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def friends_with_game
+    @game = Game.find_by_id(params[:game_id])
+    @friends = current_user.friends_with_game(@game)
+    render "users/friends"
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :username, :email, :password)

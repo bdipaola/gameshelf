@@ -1,4 +1,7 @@
 <h1 class="center-align">Super Friends!</h1>
+<% if @game %>
+  <h3 class="center-align">Who own <em><%= @game.name %></em></h3>
+<% end %>
 <% @friends.each do |friend| %>
   <%= render partial: "users/list_friend_card", locals: {friend: friend} %>
 <% end %>

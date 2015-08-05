@@ -1,0 +1,9 @@
+<form name="linkForm" method="POST" action="" id="form">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <select name="mydropdown" class="browser-default" onchange="document.getElementById('form').setAttribute('action', this.value); document.linkForm.submit(); ">
+  	<option value="">Select Category</option>
+  	<% @categories.each do |category| %>
+    <option value="/categories/<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+</form>
