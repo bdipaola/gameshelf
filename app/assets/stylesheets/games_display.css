@@ -1,0 +1,14 @@
+.game-card-title {
+  font-size: 200%;
+}
+
+.game-card-title a {
+  color: #1de9b6;
+}
+.game-card-title a:hover {
+  font-style: italic;
+}
+
+#min-max {
+  color: #ffab40;
+}
