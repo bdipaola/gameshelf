@@ -52,4 +52,10 @@ module SearchHelper
       a.name <=> b.name
     end
   end
+
+  def player_count_search(num_players)
+    Game.all.select do |game|
+      game.min_players <= num_players && game.max_players >= num_players
+    end
+  end
 end
