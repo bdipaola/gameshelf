@@ -1,0 +1,11 @@
+.friends-link a {
+  color: #ff5722;
+}
+
+.friends-link a:hover {
+  font-style: italic;
+}
+
+.game-count {
+  padding-top: 2.6em;
+}

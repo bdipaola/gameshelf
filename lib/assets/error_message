@@ -1,0 +1,6 @@
+<!--       <% #if @friend.errors.any? %>
+        <p class="red-text">Unable to find friend. Please enter a valid username.</p>
+      <% #end %> -->
+      <!-- <div class="card-action">
+        <a href="#">Add a Friend</a>
+      </div> -->
