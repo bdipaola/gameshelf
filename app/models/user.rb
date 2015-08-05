@@ -45,4 +45,8 @@ class User < ActiveRecord::Base
     friend.game_ids.include?(game.id)
   end
 
+  def has_friend_with_game?(game)
+    friends_with_game(game).count > 0
+  end
+
 end
