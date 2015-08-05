@@ -85,9 +85,12 @@ end
 games.map! { |game| game = Game.new(game) }
 
 games.each do |game|
-  unless Game.find_by(name: game.name)
+  existing_game = Game.find_by(name: game.name)
+  if existing_game
+    tim.games << existing_game
+  else
     game.save!
     tim.games << game
-    tim.save!
   end
+  tim.save!
 end
