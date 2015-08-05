@@ -12,7 +12,23 @@
 				</div>
 				<div id="min-max">Players: Min <%= game.min_players %> / Max <%= game.max_players %></div>
 				<div id="friends">My friends that have this game</div>
+
 		    </div>
+
+		    <% if current_user && current_user.games.include?(game) %>
+			    <form class="right-align" class="remove" action="/users/<%= current_user.id %>/games/<%= game.id %>/shelf/remove" method="post">
+	        <input type="hidden" name="_method" value="put">
+	        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+	        <input type="submit" value="Remove from shelf">
+	      </form>
+        <% elsif current_user %>
+          <form class="right-align" class="remove" action="/users/<%= current_user.id %>/games/<%= game.id %>/shelf/add" method="post">
+            <input type="hidden" name="_method" value="put">
+            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+            <input type="submit" value="Add to Shelf">
+          </form>
+	     	<% end %>
+
 		</div>
 	</div>
 </div>
