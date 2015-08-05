@@ -13,7 +13,7 @@
       </div>
       <div class="card-content">
         <h4>Category:</h4>
-        <p><%= @game.category.name %></p>
+        <p><a href="/categories/<%= @game.category_id %>"><%= @game.category.name %></a></p>
         <h4>Description:</h4>
         <p><%= @game.description %></p>
         <br>
