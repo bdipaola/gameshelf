@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
     post 'categories/:id' => 'categories#show'
 
+    get 'users/:id/friends' => 'users#friends'
+    put 'users/:id/add_friend' => 'users#add_friend'
+    delete 'users/:id/friends' => 'users#remove_friend'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
