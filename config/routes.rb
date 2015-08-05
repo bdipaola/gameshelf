@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'users/:id/friends' => 'users#friends'
     put 'users/:id/add_friend' => 'users#add_friend'
     delete 'users/:id/friends' => 'users#remove_friend'
+    get 'users/:id/friends/games/:game_id' => 'users#friends_with_game'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
