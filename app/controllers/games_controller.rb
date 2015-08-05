@@ -5,13 +5,15 @@ class GamesController < ApplicationController
 
     if params[:user_id]
       @user_id = params[:user_id]
-      @categories = []
+      @unsorted_categories = []
       @games = User.find(params[:user_id]).games
       @games.each do |game|
-        @categories << Category.find(game.category_id)
+        @unsorted_categories << Category.find(game.category_id)
       end
+      @categories = @unsorted_categories.sort_by!{ |name| name }
+      @categories.uniq!
     else
-      @categories = Category.all
+      @categories = Category.all.order(:name)
       @games = Game.all
     end
   end
