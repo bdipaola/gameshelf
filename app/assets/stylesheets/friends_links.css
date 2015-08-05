@@ -1,5 +1,7 @@
 .friends-link a {
   color: #ff5722;
+  font-size: 150%;
+  margin-left: 20px;
 }
 
 .friends-link a:hover {
@@ -9,3 +11,8 @@
 .game-count {
   padding-top: 2.6em;
 }
+
+.add-friend {
+  margin-top: 1em;
+}
+
