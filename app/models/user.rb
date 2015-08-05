@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
   validates_presence_of :name, :username, :email
-  validates_presence_of :canonical_name
-  validates_presence_of :canonical_username
   validates_uniqueness_of :username, :email
 
   before_create :add_canonical_name
