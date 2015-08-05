@@ -1,7 +1,11 @@
-<!-- Want to add logic so the "GameShelf Games shows on main page -->
-<!-- Otherwise, customize to user name for My Games -->
+<% current_uri = request.env['PATH_INFO'] %>
 
-<h1 class="center-align">GameShelf Games</h1>
+  <% if current_uri == "/games" || current_uri == "/" %>
+    <h1 class="center-align">GameShelf Games</h1>
+  <% else  %>
+    <h1 class="center-align">My Games</h1>
+  <% end %>
+
 <%= render partial: "categories/dropdown" %>
 <% @games.each do |game| %>
   <%= render partial: "games/game", locals: {game: game} %>
