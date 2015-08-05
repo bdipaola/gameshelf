@@ -22,15 +22,6 @@
         <h6>Maximum Players:</h6>
         <p><%= @game.max_players %>
 
-
-        <% if current_user && !current_user.games.include?(@game) %>
-          <form action="/users/<%= current_user.id %>/games/<%= @game.id %>/shelf/add" method="post">
-            <input type="hidden" name="_method" value="put">
-            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-            <input type="submit" value="Add to Shelf">
-          </form>
-          <br>
-        <% end %>
       </div>
 
       <div class="card-action">

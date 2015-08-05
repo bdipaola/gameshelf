@@ -5,3 +5,9 @@
 .content {
 	padding-left: 1em;
 }
+
+.remove {
+	position: absolute;
+	right:    0;
+	bottom:   0;	
+}

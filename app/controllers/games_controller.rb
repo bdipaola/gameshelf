@@ -17,10 +17,11 @@ class GamesController < ApplicationController
     @game = Game.find(params[:game_id])
     @user = current_user
     if @user.games.include?(@game)
-      render 'show'
+      redirect_to '/users/#{@user.id}/games'
     else
       @user.games << @game
-      redirect_to "show"
+      @user.save
+      redirect_to "/users/#{@user.id}/games"
     end
   end
 
@@ -29,9 +30,10 @@ class GamesController < ApplicationController
     @user = current_user
     if @user.games.include?(@game)
       @user.games.delete(@game)
-      redirect_to "/users/#{user.id}/games"
+      @user.save
+      redirect_to "/users/#{@user.id}/games"
     else
-      redirect_to "/users/#{user.id}/games"
+      redirect_to "/users/#{@user.id}/games"
     end
   end
 
