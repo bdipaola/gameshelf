@@ -1,5 +1,5 @@
-<div class="row">
-    <form class="col s9" id="login" action="/login" method="POST">
+<div class="row login">
+    <form class="col s9 l8 offset-l2" id="login" action="/login" method="POST">
         <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
         <div class="row">
             <div class="input-field col s4">
@@ -10,7 +10,7 @@
                 <input name="password" type="password" class="validate">
                 <label for="password">Password</label>
             </div>
-            <div class="input-field col s2">
+            <div class="input-field col s2 l4">
                 <button class="btn waves-effect waves-light" type="submit" name="login">Login
                     <i class="material-icons">send</i>
                 </button>

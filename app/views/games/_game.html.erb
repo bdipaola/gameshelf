@@ -3,14 +3,14 @@
 		<div class="card blue-grey darken-1">
 			<div class="card-img left"><%= image_tag("thumbnail-placeholder") %></div>
 	    <div class="card-content white-text title">
-	      <div class="card-title center-align"><a href="/games/<%= game.id %>"><%= game.name %></a></div>
+	      <div class="game-card-title center-align "><a href="/games/<%= game.id %>"><%= game.name %></a></div>
 	      <p class="truncate content"><%= game.description %></p>
 	    </div>
 	    <div class="card-action">
 				<div id="category">
 					<a href="/categories/<%= game.category_id %>"><%= Category.find(game.category_id).name %> Category</a>
 				</div>
-				<div id="min-max">Players: Min <%= game.min_players %> / Max <%= game.max_players %></div>
+				<div id="min-max">PLAYERS: MIN <%= game.min_players %> / MAX <%= game.max_players %></div>
 				<% if current_user && current_user.has_friend_with_game?(game) %>
 					<div id="friends">
 						<a href="/users/<%= current_user.id %>/friends/games/<%= game.id %>">My friends that have this game</a>
@@ -22,13 +22,13 @@
 		    <form class="right-align" class="remove" action="/users/<%= current_user.id %>/games/<%= game.id %>/shelf/remove" method="post">
         <input type="hidden" name="_method" value="put">
         <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-        <input type="submit" value="Remove from shelf">
+        <button class="waves-effect waves-light btn blue-grey darken-4 right" type="submit" name="remove_from_shelf">Remove from Shelf</button>
       </form>
       <% elsif current_user %>
         <form class="right-align" class="remove" action="/users/<%= current_user.id %>/games/<%= game.id %>/shelf/add" method="post">
           <input type="hidden" name="_method" value="put">
           <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-          <input type="submit" value="Add to Shelf">
+          <button class="waves-effect waves-light btn blue-grey darken-4 right" type="submit" name="add_to_shelf">Add to Shelf</button>
         </form>
      	<% end %>
 		</div>
