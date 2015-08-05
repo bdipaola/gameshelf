@@ -13,4 +13,26 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def add_to_library
+    @game = Game.find(params[:id])
+    @user = current_user
+    if @user.games.include?(@game)
+      render 'show'
+    else
+      @user.games << @game
+      redirect_to "show"
+    end
+  end
+
+  def remove_from_library
+    @game = Game.find(params[:id])
+    @user = current_user
+    if @user.games.include?(@game)
+      @user.games.delete(@game)
+      redirect_to "/users/#{user.id}/games"
+    else
+      redirect_to "/users/#{user.id}/games"
+    end
+  end
+
 end
