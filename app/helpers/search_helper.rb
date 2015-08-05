@@ -58,4 +58,12 @@ module SearchHelper
       game.min_players <= num_players && game.max_players >= num_players
     end
   end
+
+  def get_num_players(query)
+    if /\A\d+\z/ =~ query
+      query.to_i
+    else
+      nil
+    end
+  end
 end
