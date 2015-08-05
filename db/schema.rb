@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804224404) do
+ActiveRecord::Schema.define(version: 20150804234738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,13 +40,14 @@ ActiveRecord::Schema.define(version: 20150804224404) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",           null: false
     t.integer  "category_id"
-    t.text     "description", null: false
+    t.text     "description",    null: false
     t.integer  "min_players"
     t.integer  "max_players"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "canonical_name", null: false
   end
 
   add_index "games", ["max_players"], name: "index_games_on_max_players", using: :btree
@@ -61,12 +62,14 @@ ActiveRecord::Schema.define(version: 20150804224404) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",          null: false
-    t.string   "username",      null: false
-    t.string   "email",         null: false
+    t.string   "name",               null: false
+    t.string   "username",           null: false
+    t.string   "email",              null: false
     t.string   "password_hash"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "canonical_username", null: false
+    t.string   "canonical_name",     null: false
   end
 
   add_index "users", ["name"], name: "index_users_on_name", using: :btree
