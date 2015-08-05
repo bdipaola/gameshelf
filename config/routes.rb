@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     delete 'users/:id/friends' => 'users#remove_friend'
 
     put 'users/:id/library/add' => 'games#add_to_library'
-    put 'users/:id/library/add' => 'games#remove_from_library'
+    put 'users/:id/library/remove' => 'games#remove_from_library'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
