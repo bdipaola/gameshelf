@@ -15,4 +15,28 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def add_to_shelf
+    @game = Game.find(params[:game_id])
+    @user = current_user
+    if @user.games.include?(@game)
+      redirect_to '/users/#{@user.id}/games'
+    else
+      @user.games << @game
+      @user.save
+      redirect_to "/users/#{@user.id}/games"
+    end
+  end
+
+  def remove_from_shelf
+    @game = Game.find(params[:game_id])
+    @user = current_user
+    if @user.games.include?(@game)
+      @user.games.delete(@game)
+      @user.save
+      redirect_to "/users/#{@user.id}/games"
+    else
+      redirect_to "/users/#{@user.id}/games"
+    end
+  end
+
 end
