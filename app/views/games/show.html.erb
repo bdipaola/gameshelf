@@ -21,14 +21,15 @@
         <p><%= @game.min_players %>
         <h6>Maximum Players:</h6>
         <p><%= @game.max_players %>
-      </div>
 
-        <% if current_user && current_user.games.!include?(@game) %>
-          <form action="/users/<%= current_user.id %>/library/add" method="post">
+
+        <% if current_user && !current_user.games.include?(@game) %>
+          <form action="/users/<%= current_user.id %>/games/<%= @game.id %>/shelf/add" method="post">
             <input type="hidden" name="_method" value="put">
             <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-            <input type="submit" value="Add to Library">
+            <input type="submit" value="Add to Shelf">
           </form>
+          <br>
         <% end %>
       </div>
 
@@ -70,7 +71,7 @@
       <% end %>
       </p>
       </div>
-
+      </div>
 
     </div>
   </div>

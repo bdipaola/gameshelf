@@ -13,8 +13,8 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  def add_to_library
-    @game = Game.find(params[:id])
+  def add_to_shelf
+    @game = Game.find(params[:game_id])
     @user = current_user
     if @user.games.include?(@game)
       render 'show'
@@ -24,8 +24,8 @@ class GamesController < ApplicationController
     end
   end
 
-  def remove_from_library
-    @game = Game.find(params[:id])
+  def remove_from_shelf
+    @game = Game.find(params[:game_id])
     @user = current_user
     if @user.games.include?(@game)
       @user.games.delete(@game)
