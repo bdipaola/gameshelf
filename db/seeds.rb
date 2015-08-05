@@ -29,8 +29,6 @@ User.create!(name: "Pumpkin Jack", username: "Pumpkin Jack", email: "PumpkinJack
 #Creating seed categories
 negotiation = Category.create!(name: "Negotiation")
 dice = Category.create!(name: "Dice")
-# fantasy = Category.create!(name: "Fantasy")
-# mythology = Category.create!(name: "Mythology")
 travel = Category.create!(name: "Travel")
 civilization = Category.create!(name: "Civilization")
 

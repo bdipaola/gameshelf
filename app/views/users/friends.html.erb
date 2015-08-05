@@ -1,0 +1,4 @@
+<h1 class="center-align">Super Friends!</h1>
+<% @friends.each do |friend| %>
+  <%= render partial: "users/list_friend_card", locals: {friend: friend} %>
+<% end %>
