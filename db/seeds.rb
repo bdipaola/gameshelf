@@ -49,8 +49,12 @@ UserGame.destroy_all
 #   end
 # end
 
-mike = User.create!(name: "mike", username: "mike", email: "mike@mike.com", password_hash: BCrypt::Password.create("12345"))
-tim = User.create!(name: "tim", username: "tim", email: "tim@tim.com", password_hash: BCrypt::Password.create("12345"))
+mike = User.new(name: "Mike", username: "Mike", email: "mike@mike.com", password_hash: BCrypt::Password.create("12345"))
+tim = User.new(name: "Tim", username: "Tim", email: "tim@tim.com", password_hash: BCrypt::Password.create("12345"))
+mike.friends << tim
+tim.friends << mike
+mike.save!
+tim.save!
 
 # parse csv
 game_specs = []
@@ -68,3 +72,22 @@ game_specs.each do |game_spec|
 	Game.create!(game_spec)
 end
 
+games = []
+CSV.table('db/tims-games.csv').each do |row|
+  games << row.to_h
+end
+
+games.map! do |game|
+  game[:category] = Category.find_by(name: game[:category]) || Category.create!(name: game[:category])
+  game
+end
+
+games.map! { |game| game = Game.new(game) }
+
+games.each do |game|
+  unless Game.find_by(name: game.name)
+    game.save!
+    tim.games << game
+    tim.save!
+  end
+end
