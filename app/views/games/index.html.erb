@@ -1,4 +1,7 @@
-<h1 class="center-align">All Games</h1>
+<!-- Want to add logic so the "GameShelf Games shows on main page -->
+<!-- Otherwise, customize to user name for My Games -->
+
+<h1 class="center-align">GameShelf Games</h1>
 <% @games.each do |game| %>
   <%= render partial: "games/game", locals: {game: game} %>
 <% end %>

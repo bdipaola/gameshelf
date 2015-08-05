@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   include LoginHelper
   include SearchHelper
+  include FriendImgHelper
 
   def dashboard
     enforce_login(params[:id], "/")

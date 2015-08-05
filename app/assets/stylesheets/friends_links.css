@@ -1,18 +1,12 @@
-.friends-link a {
-  color: #ff5722;
-  font-size: 150%;
-  margin-left: 20px;
+.friend-name {
+  text-indent: 100px;
+  font-size: 250%;
+  padding-left: 10px;
 }
-
-.friends-link a:hover {
-  font-style: italic;
-}
-
 .game-count {
-  padding-top: 2.6em;
+  font-size: 150%;
 }
 
 .add-friend {
   margin-top: 1em;
 }
-
