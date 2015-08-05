@@ -2,9 +2,14 @@ class GamesController < ApplicationController
 	include LoginHelper
 
   def index
+
     if params[:user_id]
-      @categories = Category.all
+      @user_id = params[:user_id]
+      @categories = []
       @games = User.find(params[:user_id]).games
+      @games.each do |game|
+        @categories << Category.find(game.category_id)
+      end
     else
       @categories = Category.all
       @games = Game.all

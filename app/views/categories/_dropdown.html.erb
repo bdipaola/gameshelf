@@ -3,7 +3,11 @@
   <select name="mydropdown" class="browser-default" onchange="document.getElementById('form').setAttribute('action', this.value); document.linkForm.submit(); ">
   	<option value="">Select Category</option>
   	<% @categories.each do |category| %>
-    <option value="/categories/<%= category.id %>"><%= category.name %></option>
+  		<% if current_user %>
+    		<option value="/users/<%= @user_id %>/categories/<%= category.id %>" ><%= category.name %></option>
+    	<% else %>
+			<option value="/categories/<%= category.id %>" ><%= category.name %></option>
+    	<% end %>
     <% end %>
   </select>
 </form>
