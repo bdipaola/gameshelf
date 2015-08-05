@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
   validates_presence_of :name, :username, :email
+  validates_presence_of :canonical_name
+  validates_presence_of :canonical_username
   validates_uniqueness_of :username, :email
+
+  before_create :add_canonical_name
+  before_create :add_canonical_username
 
   has_many :user_games
   has_many :games, through: :user_games
@@ -22,6 +27,14 @@ class User < ActiveRecord::Base
 
   def authenticate(raw_password)
     password == raw_password
+  end
+
+  def add_canonical_name
+    self.canonical_name = self.name.downcase
+  end
+
+  def add_canonical_username
+    self.canonical_username = self.username.downcase
   end
 
 end
