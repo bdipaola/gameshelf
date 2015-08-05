@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :categories do
-    resource :games, only: [:index, :show]
+  resources :categories, only: [:index, :show] do
+    resources :games, only: [:index, :show]
   end
 
   resources :games, only: [:index, :show] do

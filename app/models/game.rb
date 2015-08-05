@@ -1,6 +1,5 @@
 class Game < ActiveRecord::Base
   validates_presence_of :name, :description
-  validates_presence_of :canonical_name
   validates_uniqueness_of :name
 
   before_create :add_canonical_name
