@@ -3,7 +3,8 @@
 }
 
 .game-card-title a {
-  color: #1de9b6;
+  color: #CFF09E;
+  font-weight: bold;
 }
 .game-card-title a:hover {
   font-style: italic;
@@ -12,3 +13,8 @@
 #min-max {
   color: #ffab40;
 }
+
+.players {
+  text-indent: 20px;
+}
+
