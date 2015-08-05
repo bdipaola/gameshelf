@@ -11,7 +11,7 @@
 					<a href="/categories/<%= game.category_id %>"><%= Category.find(game.category_id).name %> Category</a>
 				</div>
 				<div id="min-max">Players: Min <%= game.min_players %> / Max <%= game.max_players %></div>
-				<% if current_user %>
+				<% if current_user && current_user.has_friend_with_game?(game) %>
 					<div id="friends">
 						<a href="/users/<%= current_user.id %>/friends/games/<%= game.id %>">My friends that have this game</a>
 					</div>
