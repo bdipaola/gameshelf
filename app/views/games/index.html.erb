@@ -1,9 +1,10 @@
 <% current_uri = request.env['PATH_INFO'] %>
+<%= user_id = params[:id] %>
 
   <% if current_uri == "/games" || current_uri == "/" %>
     <h1 class="center-align">GameShelf Games</h1>
-  <% else  %>
-    <h1 class="center-align">My Games</h1>
+  <% else %>
+    <h1 class="center-align">Games</h1>
   <% end %>
 
 <%= render partial: "categories/dropdown" %>
