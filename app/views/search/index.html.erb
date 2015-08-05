@@ -1,5 +1,13 @@
-<h1>Games</h1>
+<% unless @games.empty? %>
+  <h1>Games</h1>
+  <% @games.each do |game| %>
+    <%= render partial: "games/game", locals: {game: game} %>
+  <% end %>
+<% end %>
 
-<% @games.each do |game| %>
-  <%= render partial: "games/game", locals: {game: game} %>
+<% unless @categories.empty? %>
+  <h1>Categories</h1>
+  <% @categories.each do |category| %>
+    <%= render partial: "categories/category", locals: {category: category} %>
+  <% end %>
 <% end %>
