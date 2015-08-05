@@ -10,7 +10,7 @@
         <li><a href="/users/new">Create Account</a></li>
       <% end %>
       <li>
-        <form id="search-form" action="/search" method="POST">
+        <form id="search-form" action="/search" method="GET">
           <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
           <div class="input-field sm">
             <input id="search" name="search" type="search" required>

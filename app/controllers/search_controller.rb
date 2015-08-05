@@ -1,14 +1,16 @@
 class SearchController < ApplicationController
+  include SearchHelper
 
   def index
-  end
-
-  def create
-    game = Game.where("name like ?", "%#{params[:search]}%").first
-    if game
-      redirect_to game
+    num_players = get_num_players(params[:search])
+    if num_players
+      @games = player_count_search(num_players)
+      @categories = []
+      @users = []
     else
-      redirect_to search_index_path
+      @games = game_search(params[:search])
+      @users = user_search(params[:search])
+      @categories = category_search(params[:search])
     end
   end
 end
