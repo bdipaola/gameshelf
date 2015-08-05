@@ -23,7 +23,11 @@ module SearchHelper
     terms = query.split(' ')
     results = []
     terms.each do |term|
-      results += game_canonical_name_search(term)
+      if results.empty?
+        results += game_canonical_name_search(term)
+      else
+        results &= game_canonical_name_search(term)
+      end
     end
     sort_by_name(results.uniq)
   end
@@ -32,8 +36,17 @@ module SearchHelper
     terms = query.split(' ')
     results = []
     terms.each do |term|
-      results += user_canonical_name_search(term)
-      results += user_canonical_username_search(term)
+      if results.empty?
+        results += user_canonical_name_search(term)
+      else
+        results &= user_canonical_name_search(term)
+      end
+
+      if results.empty?
+        results += user_canonical_username_search(term)
+      else
+        results &= user_canonical_username_search(term)
+      end
     end
     sort_by_name(results.uniq)
   end
@@ -42,7 +55,11 @@ module SearchHelper
     terms = query.split(' ')
     results = []
     terms.each do |term|
-      results += category_canonical_name_search(term)
+      if results.empty?
+        results += category_canonical_name_search(term)
+      else
+        results &= category_canonical_name_search(term)
+      end
     end
     sort_by_name(results.uniq)
   end
