@@ -1,0 +1,8 @@
+<form name="linkForm" method="POST" action="" id="form">
+  <select name="mydropdown" class="browser-default" onchange="document.getElementById('form').setAttribute('action', this.value); document.linkForm.submit(); ">
+  	<option value="">Select Category</option>
+  	<% @categories.each do |category| %>
+    <option value="/categories/<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+</form>

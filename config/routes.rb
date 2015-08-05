@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
     get 'logout' => 'login#destroy'
 
+    post 'categories/:id' => 'categories#show'
+
     get 'users/:id/friends' => 'users#friends'
     put 'users/:id/add_friend' => 'users#add_friend'
     delete 'users/:id/friends' => 'users#remove_friend'
